@@ -10,24 +10,24 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Utils\Encoder;
-
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * Class ApiController
  *
  * @Route("/api")
  */
-class ServicioController extends AbstractFOSRestController
+class GetPuntosController extends AbstractController
 {
-     /**
-     * @Rest\Get("/get/tramos.{_format}", name="get_tramo", defaults={"_format":"json"})
+    /**
+     * @Rest\Get("/get/puntos.{_format}", name="get_puntos", defaults={"_format":"json"})
      *
      */
-    public function getTramos(Request $request) {
+    public function getPuntos(Request $request) {
         $em = $this->getDoctrine()->getManager();
 
 
-        $tramos = $em->getRepository("App:TaGenTramos")->findAll();
+        $tramos = $em->getRepository("App:TaGenTramosPuntos")->findAll();
 
 
         if($tramos){
@@ -41,7 +41,7 @@ class ServicioController extends AbstractFOSRestController
             $response = [
                 'code' => 400,
                 'error' => true,
-                'data' => 'Tramo no encontrado'
+                'data' => 'Puntos no encontrado'
             ];
         }
 
@@ -51,6 +51,4 @@ class ServicioController extends AbstractFOSRestController
         return new Response($response);
 
     }
-
-
 }

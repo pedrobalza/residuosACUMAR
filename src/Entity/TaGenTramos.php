@@ -2,10 +2,8 @@
 
 namespace App\Entity;
 
-
-use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * TaGenTramos
  *
@@ -20,7 +18,7 @@ class TaGenTramos
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
-     * @Groups({"default","service"})
+     * @Groups({"service"})
      */
     private $id;
 
@@ -28,7 +26,7 @@ class TaGenTramos
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=255, nullable=false)
-     * @Groups({"default","service"})
+     * @Groups({"service"})
      */
     private $nombre;
 

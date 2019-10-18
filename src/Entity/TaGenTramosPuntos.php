@@ -4,12 +4,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * TaGenTramosPuntos
  *
  * @ORM\Table(name="ta_gen_tramos_puntos")
- * @ORM\Entity(repositoryClass="App\Repository\TaGenTramosPuntossRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\TaGenTramosPuntosRepository")
  */
 class TaGenTramosPuntos
 {
@@ -34,69 +36,77 @@ class TaGenTramosPuntos
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=255, nullable=false)
+     * @Groups({"default","service"})
      */
     private $nombre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="punto_latitud", type="decimal", precision=11, scale=7, nullable=false)
+     * @ORM\Column(name="punto_latitud", type="decimal", precision=11, scale=7, nullable=true)
      */
     private $puntoLatitud;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="punto_longitud", type="decimal", precision=11, scale=7, nullable=false)
+     * @ORM\Column(name="punto_longitud", type="decimal", precision=11, scale=7, nullable=true)
      */
     private $puntoLongitud;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="ad_hoc", type="integer", nullable=false)
+     * @ORM\Column(name="ad_hoc", type="integer", nullable=true)
+     * @Groups({"default","service"})
      */
     private $adHoc;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="fecha_alta", type="datetime", nullable=false)
+     * @ORM\Column(name="fecha_alta", type="string", length=50, nullable=true)
+     * @Groups({"default","service"})
      */
     private $fechaAlta;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="auditor_alta", type="string", length=10, nullable=false)
+     * @ORM\Column(name="auditor_alta", type="string", length=50, nullable=true)
+     * @Groups({"default","service"})
      */
     private $auditorAlta;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="fecha_actualizacion", type="datetime", nullable=false)
+     * @ORM\Column(name="fecha_actualizacion", type="string", length=50, nullable=true)
+     * @Groups({"default","service"})
      */
     private $fechaActualizacion;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="auditor_actualizacion", type="datetime", nullable=false)
+     * @ORM\Column(name="auditor_actualizacion", type="string", length=50, nullable=true)
+     * @Groups({"default","service"})
      */
     private $auditorActualizacion;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="fecha_baja", type="datetime", nullable=false)
+     * @ORM\Column(name="fecha_baja", type="string", length=50, nullable=true)
+     * @Groups({"default","service"})
      */
     private $fechaBaja;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="auditor_baja", type="string", length=10, nullable=false)
+     * @ORM\Column(name="auditor_baja", type="string", length=50, nullable=true)
+     * @Groups({"default","service"})
      */
     private $auditorBaja;
 
@@ -165,12 +175,12 @@ class TaGenTramosPuntos
         return $this;
     }
 
-    public function getFechaAlta(): ?\DateTimeInterface
+    public function getFechaAlta(): ?string
     {
         return $this->fechaAlta;
     }
 
-    public function setFechaAlta(\DateTimeInterface $fechaAlta): self
+    public function setFechaAlta(string $fechaAlta): self
     {
         $this->fechaAlta = $fechaAlta;
 
@@ -189,36 +199,36 @@ class TaGenTramosPuntos
         return $this;
     }
 
-    public function getFechaActualizacion(): ?\DateTimeInterface
+    public function getFechaActualizacion(): ?string
     {
         return $this->fechaActualizacion;
     }
 
-    public function setFechaActualizacion(\DateTimeInterface $fechaActualizacion): self
+    public function setFechaActualizacion(string $fechaActualizacion): self
     {
         $this->fechaActualizacion = $fechaActualizacion;
 
         return $this;
     }
 
-    public function getAuditorActualizacion(): ?\DateTimeInterface
+    public function getAuditorActualizacion(): ?string
     {
         return $this->auditorActualizacion;
     }
 
-    public function setAuditorActualizacion(\DateTimeInterface $auditorActualizacion): self
+    public function setAuditorActualizacion(string $auditorActualizacion): self
     {
         $this->auditorActualizacion = $auditorActualizacion;
 
         return $this;
     }
 
-    public function getFechaBaja(): ?\DateTimeInterface
+    public function getFechaBaja(): ?string
     {
         return $this->fechaBaja;
     }
 
-    public function setFechaBaja(\DateTimeInterface $fechaBaja): self
+    public function setFechaBaja(string $fechaBaja): self
     {
         $this->fechaBaja = $fechaBaja;
 
