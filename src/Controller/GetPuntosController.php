@@ -20,14 +20,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class GetPuntosController extends AbstractController
 {
     /**
-     * @Rest\Get("/get/puntos.{_format}", name="get_puntos", defaults={"_format":"json"})
+     * @Rest\Get("/get/puntos/{tramoId}.{_format}", name="get_puntos", defaults={"_format":"json"})
      *
      */
-    public function getPuntos(Request $request) {
+    public function getPuntosTramos(Request $request, $tramoId) {
         $em = $this->getDoctrine()->getManager();
 
 
-        $tramos = $em->getRepository("App:TaGenTramosPuntos")->findAll();
+        $tramos = $em->getRepository("App:TaGenTramosPuntos")->findBy(['tramoId' => $tramoId]);
+
 
 
         if($tramos){
@@ -51,4 +52,38 @@ class GetPuntosController extends AbstractController
         return new Response($response);
 
     }
+
+
+//    /**
+//     * @Rest\Get("/get/puntos.{_format}", name="get_puntos", defaults={"_format":"json"})
+//     *
+//     */
+//    public function getPuntos(Request $request) {
+//        $em = $this->getDoctrine()->getManager();
+//
+//
+//        $tramos = $em->getRepository("App:TaGenTramosPuntos")->findAll();
+//
+//
+//        if($tramos){
+//            $response = [
+//                'code' => 200,
+//                'error' => false,
+//                'data' => $tramos
+//            ];
+//        }else{
+//
+//            $response = [
+//                'code' => 400,
+//                'error' => true,
+//                'data' => 'Puntos no encontrado'
+//            ];
+//        }
+//
+//
+//
+//        $response = Encoder::convert($response,['service']);
+//        return new Response($response);
+//
+//    }
 }
