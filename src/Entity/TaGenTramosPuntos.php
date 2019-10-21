@@ -29,6 +29,7 @@ class TaGenTramosPuntos
      * @var int
      *
      * @ORM\Column(name="tramo_id", type="integer", nullable=false)
+     * @Groups({"default","service"})
      */
     private $tramoId;
 
